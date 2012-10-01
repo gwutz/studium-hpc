@@ -57,5 +57,39 @@ sind für Parallelisierung geeignet. Auch können schlechte Implementierungen f�
 Performancezuwachs schuld sein, obwohl die Applikation ansonsten für Parallelisierung geeignet wäre.
 
 \section*{Amdahl's Law (1967)}
+Amdahl beschrieb 1967 bereits den Geschwindigkeitszuwachs durch Parallelisierung. Er zerlegt ein Programm
+in zwei Teile, den vollständig sequentiellen Teil (\(\alpha\))und den vollständig Parallelisierbaren Teil (\(1-\alpha\)).
+
+Daraus folgt die parallele Laufzeit auf p Prozessoren:
+\[ T_p = \alpha T_1 + (1-\alpha)*\frac{T_1}{p} = T_1 * (\alpha + \frac{(1-\alpha)}{p})\]
+
+Daraus wiederum kann der Speedup durch obige Formel berechnet werden:
+
+\[ S_p = \frac{T_1}{T_p} = \frac{1}{\alpha+\frac{(1-\alpha)}{p}} \leq \frac{1}{\alpha} \]
+
+Daraus folgt: Eine Applikation, die zu 90\% perfect parallelisiert werden kann, kann nur bis zum
+Faktor 10 beschleunigt werden, unabhängig davon, wieviele Prozessoren benutzt werden. Damit
+bildet \(1/\alpha\) die obere Schranke.
+
+\section*{Gustafson's Law (1988)}
+Amdahl nahm in seiner These an, dass der sequentielle Part mit der Problemgröße wächst. Gustafson
+Ansatz war, dass der sequentielle Teil der meisten Applikationen eine konstante Laufzeit hat.
+
+Sei \(T_1(n)\) die sequentielle Laufzeit für die Problemgröße n. So folgt
+\[ T_1(n) = \tau + v(n)\]
+wobei \(\tau\) der konstante sequentielle Teil und v perfekt parallelisierbar ist. Daraus folgt die
+Parallele Laufzeit auf p Prozessoren
+
+\[ T_p(n) = \tau + \frac{v(n)}{p}\]
+
+Nach Gustafson ist damit eine Speedup
+
+\[ S_p(n) = \frac{T_1(n)}{T_p(n)} = \frac{\tau + v(n)}{\tau + \frac{v(n)}{p}} = \frac{\frac{\tau}{v(n)} + 1}{\frac{\tau}{v(n)} + \frac{1}{p}} \]
+
+Wenn man nun die Problemgröße n gegen Unendlich gehen lässt, so wird die Laufzeit v(n) immer kleiner.
+
+\[ \lim_{n \rightarrow \infty} S_p(n) = p\]
+
+Solche Applikationen nennt man \textbf{Skalierbar}.
 
 \end{document}
