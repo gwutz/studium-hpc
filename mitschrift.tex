@@ -1,0 +1,61 @@
+\documentclass[twocolumn, a4paper, 10pt, DIV12]{scrreprt}
+\input{preambel.tex}
+
+\title{High Performance Computing}
+
+\begin{document}
+\maketitle
+\chapter*{Einführung}
+Eine (informale) Definition von Parallelität: verschiedene Prozessoreinheiten 
+(CPUs, ALUs, FPUs, etc.) arbeiten simultan (z. B. parallel) um einen gemeinsamen
+Task zu lösen.
+
+Warum wollen wir das?
+\begin{itemize}
+\item Manche Applikationen benötigen einen Speedup z. B. Klimavorhersagen,
+        Windtunnel, Motorkonstruktion, Atomkraftwerktests oder Spiele
+\end{itemize}
+
+\section*{Herausforderungen von Parallelabarbeitung}
+\begin{itemize}
+\item Rießige Speicheranforderungen
+\item Hohe Durchsatzanforderungen (z. B. Reiseplatformen)
+\item Verteilte und Kooperative Internetanwendungen
+\item Datenreplikation und Ausfallstrategien (Rechenclouds)
+\item Heterogenität und Interoperabilität
+\end{itemize}
+
+\section*{Geschwindigkeit}
+Geschwindigkeit bzw. Performance ist unser \textbf{Hauptgrund} um Parallele
+Programme zu schreiben. Formal ist die \code{Geschwindigkeitssteigerung für p
+Prozessoren} folgendermaßen definiert:
+
+\[
+S_p = \frac{T_1}{T_p}
+\]
+
+\begin{itemize}
+    \item p ist die Anzahl der Prozessoren
+    \item \(T_p\) ist die Laufzeit unserer Applikation auf p Prozessoren
+    \item \(T_1\) ist die Sequenzielle Laufzeit der gleichen Applikation (Laufzeit auf einem Prozessor)
+\end{itemize}
+
+Demzufolge ist \(S_p\) der relative Laufzeitvorteil dem man mit p Prozessoren erreichen kann, verglichen
+mit einer sequenziellen Implementierung.\\
+
+Den Geschwindigkeitszuwachs, den man für p Prozessoren erwarten kann: Potenziell \code{p}.
+Dazu ein Rechenbeispiel: Unsere Applikation benötigt sequenziell 10s zur Ausführung. Wenn wir
+nun 2 Prozessoren nutzen, könnte das oberste Limit für die Ausführung 5s betragen. Daraus ergibt
+sich ein Speedup von \( S_p = \frac{10s}{5s} = 2 \) was unserer eingesetzen Prozessoranzahl entspricht.
+
+Wir werden später noch sehen, dass auch Geschwindigkeitssteigerungen über linearem Zuwachs möglich sind.
+Diese werden entsprechend \textit{superlinear} genannt.
+
+Für typische Software kann man den Speedup zwischen \( 1 \leq S_p \leq p \) vermuten. Manche Programme
+können sogar einen Einbruch der Geschwindigkeit mit Parallel Computing erleben. Nicht alle Applikationen
+sind für Parallelisierung geeignet. Auch können schlechte Implementierungen für einen schlechten
+Performancezuwachs schuld sein, obwohl die Applikation ansonsten für Parallelisierung geeignet wäre.
+
+\section*{Amdahl's Law (1967)}
+
+\end{document}
