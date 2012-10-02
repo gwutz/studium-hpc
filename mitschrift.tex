@@ -2,6 +2,7 @@
 \input{preambel.tex}
 
 \title{High Performance Computing}
+\author{Günther Wutz}
 
 \begin{document}
 \maketitle
@@ -86,7 +87,7 @@ Nach Gustafson ist damit eine Speedup
 
 \[ S_p(n) = \frac{T_1(n)}{T_p(n)} = \frac{\tau + v(n)}{\tau + \frac{v(n)}{p}} = \frac{\frac{\tau}{v(n)} + 1}{\frac{\tau}{v(n)} + \frac{1}{p}} \]
 
-Wenn man nun die Problemgröße n gegen Unendlich gehen lässt, so wird die Laufzeit v(n) immer kleiner.
+Wenn man nun die Problemgröße n gegen Unendlich gehen lässt, so wird die Laufzeit v(n) immer größer.
 
 \[ \lim_{n \rightarrow \infty} S_p(n) = p\]
 
