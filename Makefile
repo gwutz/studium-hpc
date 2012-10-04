@@ -1,3 +1,6 @@
+# Initial Makefile lend from Christian Hergert
+#
+
 NAME := mitschrift
 
 PDFLATEX := $(shell which pdflatex)
