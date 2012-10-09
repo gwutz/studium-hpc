@@ -13,6 +13,7 @@ TEX_FILES :=
 TEX_FILES += src/mitschrift.tex
 TEX_FILES += src/preambel.tex
 TEX_FILES += src/einfuehrung.tex
+TEX_FILES += src/classification.tex
 
 FIGURE_FILES :=
 EXERCISE_FILES :=

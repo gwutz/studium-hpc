@@ -1,0 +1,31 @@
+\section{Parallele Architekturen}
+
+\begin{compactitem}
+\item Architektur eines einzelnen Prozessors
+\item Infrastruktur über mehrere Prozessoren hinweg
+\end{compactitem}
+
+\subsection{Single Chip}
+
+Da die Performance der Taktraten eines Prozessors pro Jahr ungefähr um 30\%
+steigt, die Performance von Applikationen aber um 55\% - 75\% pro Jahr steigt,
+kann die Taktrate nicht alleine für den Speedup herangezogen werden.
+
+\subsection{Fünf Ebenen von Parallelität}
+
+\begin{compactitem}
+\item auf Bitebene
+\item Pipelining
+\item auf der Ebene von Funktionalen Einheiten (ALU, FPU, etc.)
+\item Prozessebene
+\item Threadebene
+\end{compactitem}
+
+\subsubsection{Die Bitebene}
+
+Mit der Bitebene sind die Algorithmen gemeint, welche z.B. bei den Carry-Look-Ahead
+Addern benützt werden. Diese Effizienzsteigerungen werden durch Parallelität anstatt
+durch Sequentielles Addieren erreicht. Grundsätzlich können alle Bits in einem 
+(Register) Word parallelisiert werden. Da die maximale Größe der ansteuerbaren
+Adressen fürs erste so hoch ist, dass man jetzt noch nicht daran denkt, diese
+jemals auszuschöpfen, ist die Entwicklung bei 64 Bit Wörtern stehen geblieben.
