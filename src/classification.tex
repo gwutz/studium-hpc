@@ -29,3 +29,9 @@ durch Sequentielles Addieren erreicht. Grundsätzlich können alle Bits in einem
 (Register) Word parallelisiert werden. Da die maximale Größe der ansteuerbaren
 Adressen fürs erste so hoch ist, dass man jetzt noch nicht daran denkt, diese
 jemals auszuschöpfen, ist die Entwicklung bei 64 Bit Wörtern stehen geblieben.
+
+\subsubsection{Pipelining}
+
+Pipelining nützt die Tatsache aus, dass jede Instruktion auf einem Prozessor
+mehrere Schritte hat. Fetch, Decode, Execute und Write-back. Traditionelle
+Prozessoren haben diese Schritte Sequentiell bearbeitet. 
