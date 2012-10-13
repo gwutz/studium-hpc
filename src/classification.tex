@@ -74,16 +74,62 @@ Schreiboperationen auf Register werden nicht ausgeführt solange bis alle vorher
 gehenden Operationen, welche auf die selben Register schreiben, nicht beendet wurden.
 In der Tomasulo Architektur wird das durch den zusätzlichen Stage \textit{Commit}
 erreicht.
-\subsubsection{Prozesse und Threads}
 
+\subsubsection{Prozesse und Threads}
+Bis jetzt wurde nur ein einzelner Kontrollfluß betrachtet. Wenn man den Kontrollfluß
+auch noch parallelisiert, so spricht man auf der Hardwareebene von \textbf{
+Hyper-Threading Technology - HTT} und auf der Softwareebene von \textbf{Multithreading}.
+Dabei gibt es verschiedene Aspecte zu beachten:
+
+\begin{compactitem}
+\item Statisch vs. Dynamisch (Optimierungen zur Laufzeit vs. Optimierungen zur Compilezeit)
+\item Benefit/Optimization vs. Cost/Overhead
+\item Korrektheit: Semantik darf nicht verletzt werden!
+\end{compactitem}
 
 \section{Klassifikation von Parrallelcomputern}
 
 \subsection{M. Flynns Klassifikation}
+Flynns Klassifikation war eine der ersten Einteilungen. Sie ist immernoch eine
+der häufigsten verwendeten. Sie ist sehr einfach. Er bezieht lediglich 2 Kriterien
+in seine Klassifikation ein: \textbf{Instruktionen} und \textbf{Daten} bwz.
+Kontrollfluß und Datenfluß. Für beide gibt es zwei Zuweisungen: Entweder \textbf{
+Single} oder \textbf{Multiple}.
+
+Daraus ergeben sich folgende Möglichkeiten: 
+\begin{center}
+\begin{tabular}{|ll|cc|}\hline
+&&\multicolumn{2}{c|}{\textbf{Instruktionen}}\\
+&&S&M\\\hline
+\multirow{2}{*}{\textbf{Daten}}&S & SISD & MISD\\
+&M & SIMD & MIMD\\\hline
+\end{tabular}
+\end{center}
 
 \subsubsection{SISD}
+Der klassische Von-Neumann-Rechner. Jede Instruktion wird folgendermaßen ausgeführt:
+Lade die Instruktion vom Programmspeicher, lade die Daten vom Datenspeicher, 
+führe die Instruktion auf die Daten aus und speichere das Ergebnis anschließend
+im Datenspeicher.
+
 \subsubsection{MISD}
+Hier erfolgt die Ausführung einer Instruktion folgendermaßen: Lade von einem
+für jeden Prozessor lokalem Programmspeicher die Instruktion, lade die gleichen
+Daten vom Datenspeicher, führe verschiedene Instruktionen auf die Daten aus.
+Diese Architektur wird von \textit{keinem} Computer benützt, sie ist rein theoretischer
+Natur.
+
 \subsubsection{SIMD}
+Lade von einem globalen Programmspeicher eine Instruktion, lade verschiedene Daten
+von einem globalen oder verteilten Datenspeicher und führe parallel den Befehl
+auf verschiedene Daten aus. Diese Architektur wurde bis mitte der Neunziger Jahre
+von vielen Computern implementiert. Eine Anwendung wäre Seismologie.
+
 \subsubsection{MIMD}
+Lade von einem für jeden Prozessor unabhängigen lokalem Programmspeicher verschiedene
+Instruktionen, lade verschiedenen Daten von einem globalen oder verteiltem
+Datenspeicher und anschließend asynchrone Ausführungen aller Instruktionen.
+Diese Architektur ist momentan die populärste. Viele Parallelcomputer sind
+hybride: MIMD Cluster mit SIMD Knoten.
 
 \subsection{Klassifikation nach Memory Layout}
